@@ -1,19 +1,32 @@
 package com.kainos.ea.employees;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.Scanner;
 
 public class Main {
+    public static String departmentCh = "";
 
     public static void main(String[] args) {
-
-        System.out.println("Welcome to the system");
-        System.out.println("---------------------\n\nPlease enter your username");
-
         Scanner scanner = new Scanner(System.in);
-        String userName = scanner.nextLine();
+        System.out.println("Welcome to the system");
+        boolean signedIn = false;
+        do {
+            System.out.println("---------------------\n\nPlease enter your department:");
+            System.out.println("HR (H)");
+            System.out.println("FINANCE (F)");
+            System.out.println("SALES (S)");
+            System.out.println("TALENT (T)");
+            System.out.print("\nOption: ");
+            departmentCh = scanner.nextLine();
 
-        System.out.println("Please enter your password");
-        String password = scanner.nextLine();
+            if (departmentCh.equals("H") || departmentCh.equals("F") || departmentCh.equals("S") || departmentCh.equals("T")) {
+                signedIn = true;
+            } else {
+                System.out.println("Error: Please select a department listed");
+            }
+            System.out.println();
+        } while (!signedIn);
 
 
         ///////////////////////
