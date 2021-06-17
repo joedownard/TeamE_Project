@@ -100,6 +100,10 @@ public class Main {
      * TODO: Needs SQL SCripts to input the data
      */
     public static void addEmployee() {
+        if (Main.departmentCh != "H") {
+            System.out.println("Error: Only HR employees can access this function");
+            return;
+        }
         Scanner addEmp = new Scanner(System.in);
         System.out.println("Please enter the following details for the employee:");
         System.out.println("----------------------------------------------------");
