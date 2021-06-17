@@ -1,6 +1,8 @@
 package com.kainos.ea.dbUtils;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -17,10 +19,19 @@ public class DBConnection {
             return conn;
         }
         FileInputStream propsStream =
-                new FileInputStream("employeesdb.properties");
+                null;
+        try {
+            propsStream = new FileInputStream("employeesdb.properties");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         Properties props = new Properties();
-        props.load(propsStream);
+        try {
+            props.load(propsStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         user = props.getProperty("user");
         password = props.getProperty("password");
