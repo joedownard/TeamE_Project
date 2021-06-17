@@ -22,6 +22,8 @@ public class UseCases {
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -36,6 +38,8 @@ public class UseCases {
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -50,6 +54,8 @@ public class UseCases {
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -64,6 +70,7 @@ public class UseCases {
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
     }
@@ -79,6 +86,7 @@ public class UseCases {
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
     }
@@ -93,7 +101,8 @@ public class UseCases {
                 System.out.println(String.format("%s (Project ID: %s)", rs.getString("project_name"), rs.getString("project_id")));
             }
         } catch (SQLException e) {
-            System.out.println("Unable to query the database to complete this report!");
+            System.out.println("Unable to list the projects from the databases!");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
 
@@ -109,7 +118,9 @@ public class UseCases {
                 System.out.println(String.format("%s (Project ID: %s) has been assigned %d employees.", rs.getString("project_name"), rs.getString("project_id"), rs.getInt("COUNT(*)")));
             }
         } catch (SQLException e) {
-            System.out.println("Unable to query the database to complete this report!");
+            System.out.println("Unable to complete your request!");
+            System.out.println("Ensure the project id you have entered exists.");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
     }
@@ -125,6 +136,7 @@ public class UseCases {
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
     }
@@ -140,7 +152,9 @@ public class UseCases {
             int rs = st.executeUpdate(
                     "INSERT INTO Project (project_name) VALUES ('"+project_name+"')");
         } catch (SQLException e) {
-            System.out.println("Unable to query the database to complete this report!");
+            System.out.println("Unable to complete your request");
+            System.out.println("Ensure the project name is valid.");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
     }
@@ -156,7 +170,8 @@ public class UseCases {
                 System.out.println(String.format("%s (Project ID: %s)", rs.getString("project_name"), rs.getString("project_id")));
             }
         } catch (SQLException e) {
-            System.out.println("Unable to query the database to complete this report!");
+            System.out.println("Unable to retrieve the list of projects!");
+            System.out.println("Please contact your systems administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
 
@@ -170,7 +185,8 @@ public class UseCases {
                 System.out.println(String.format("%s (Employee ID: %s)", rs.getString("emp_name"), rs.getString("emp_id")));
             }
         } catch (SQLException e) {
-            System.out.println("Unable to query the database to complete this report!");
+            System.out.println("Unable to list the technical employees available to be assigned!");
+            System.out.println("Please contact your systems administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
 
@@ -186,7 +202,9 @@ public class UseCases {
             int rs = st.executeUpdate(
                     "INSERT INTO Technical_Project (emp_id, project_id) VALUES ("+emp_id+", "+project_id+")");
         } catch (SQLException e) {
-            System.out.println("Unable to query the database to complete this report!");
+            System.out.println("Unable to complete your request!");
+            System.out.println("Ensure you the employee is not already assigned to the project and that both the employee and project ids are valid.");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
             System.out.println(e.getMessage());
         }
     }
@@ -200,7 +218,47 @@ public class UseCases {
 
             System.out.println("Employee successfully added");
         } catch (SQLException e) {
-            System.out.println("Unable to query the database to complete this action!");
+            System.out.println("Unable to complete your request!");
+            System.out.println("Please ensure the fields follow the correct format.");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void addSalesEmployee () {
+        Connection connection = DBConnection.getConnection();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(
+                    "SELECT * FROM Employee LEFT OUTER JOIN Sales_Employee USING(emp_id) WHERE commission_rate IS NULL");
+            while (rs.next()) {
+                System.out.println(String.format("%s (Employee ID: %s), who is currently in department %s", rs.getString("emp_name"), rs.getString("emp_id"), rs.getString("department")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Unable to list the employees available to be assigned!");
+            System.out.println("Please contact your systems administrator and quote the following error message.");
+            System.out.println(e.getMessage());
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the id of the employee you wish to add to sales employee.");
+        int emp_id = scanner.nextInt();
+        System.out.println("Please enter the commission rate for the employee.");
+        int commission_rate = scanner.nextInt();
+        System.out.println("Please enter the sales value for the employee.");
+        int sales_value = scanner.nextInt();
+
+        try {
+            Statement st = connection.createStatement();
+            int rs = st.executeUpdate(
+                    "INSERT INTO Sales_Employee (emp_id, commission_rate, total_sales_value) VALUES ("+emp_id+", "+commission_rate+", "+sales_value+");");
+
+            System.out.println("Sales Employee successfully added");
+        } catch (SQLException e) {
+            System.out.println("Unable to complete your request!");
+            System.out.println("Please ensure the fields follow the correct format.");
+            System.out.println("If you continue to have issues please contact your system administrator and quote the following error message.");
+            System.out.println(e.getMessage());
         }
     }
 }

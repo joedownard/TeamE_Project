@@ -23,19 +23,20 @@ public class Main {
             System.out.println("Please select an option");
             System.out.println("---------------------");
             System.out.println("\nHR STAFF:");
-            System.out.println("1) Add employee");
-            System.out.println("2) Department Employees");
+            System.out.println("1) Add Employee");
+            System.out.println("2) Add Sales Employee");
+            System.out.println("3) Department Employees");
             System.out.println("\nFINANCE STAFF:");
-            System.out.println("3) Employee Gross Pay");
+            System.out.println("4) Employee Gross Pay");
             System.out.println("\nSALES MANAGER:");
-            System.out.println("4) Highest Sales Total Employee");
+            System.out.println("5) Highest Sales Total Employee");
             System.out.println("\nTALENT MANAGER:");
-            System.out.println("5) Create Project");
-            System.out.println("6) Assign to Project");
-            System.out.println("7) See Assigned Employees");
-            System.out.println("8) See Benched Employees");
-            System.out.println("9) See Unassigned Projects");
-            System.out.println("10) See Number of Employees on Project");
+            System.out.println("6) Create Project");
+            System.out.println("7) Assign to Project");
+            System.out.println("8) See Assigned Employees");
+            System.out.println("9) See Benched Employees");
+            System.out.println("10) See Unassigned Projects");
+            System.out.println("11) See Number of Employees on Project");
             System.out.print("\nOption: ");
             int option = scanner.nextInt();
             System.out.println();
@@ -44,30 +45,33 @@ public class Main {
                     addEmployee();
                     break;
                 case 2:
-                    UseCases.employeeSummaryReport();
+                    UseCases.addSalesEmployee();
                     break;
                 case 3:
-                    UseCases.grossPayReport();
+                    UseCases.employeeSummaryReport();
                     break;
                 case 4:
-                    UseCases.highestSalesReport();
+                    UseCases.grossPayReport();
                     break;
                 case 5:
-                    UseCases.createProject();
+                    UseCases.highestSalesReport();
                     break;
                 case 6:
-                    UseCases.assignToProject();
+                    UseCases.createProject();
                     break;
                 case 7:
-                    UseCases.projectEmployeeReport();
+                    UseCases.assignToProject();
                     break;
                 case 8:
-                    UseCases.employeesWithNoProjectReport();
+                    UseCases.projectEmployeeReport();
                     break;
                 case 9:
-                    UseCases.projectsWithNoEmployeesReport();
+                    UseCases.employeesWithNoProjectReport();
                     break;
                 case 10:
+                    UseCases.projectsWithNoEmployeesReport();
+                    break;
+                case 11:
                     UseCases.numberOfEmployeesOnSpecificProject();
                     break;
             }
