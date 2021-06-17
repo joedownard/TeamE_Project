@@ -190,4 +190,17 @@ public class UseCases {
             System.out.println(e.getMessage());
         }
     }
+
+    public static void addEmployee(String name, String address, String nin, String ban, String sortCode, double salary, department depart, boolean isManager) {
+        Connection connection = DBConnection.getConnection();
+        try {
+            Statement st = connection.createStatement();
+            int rs = st.executeUpdate(
+                    "INSERT INTO Employee (emp_name, address, nin, ban, sortcode, salary, department, manager) VALUES ('" + name + "', '" + address + "', '" + nin + "', '" + ban + "', '" + sortCode + "', " + salary + ", '" + depart.toString() + "', " + (isManager ? 1 : 0) +");");
+
+        } catch (SQLException e) {
+            System.out.println("Unable to query the database to complete this action!");
+            System.out.println(e.getMessage());
+        }
+    }
 }
