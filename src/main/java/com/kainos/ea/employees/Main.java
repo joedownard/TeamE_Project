@@ -104,7 +104,7 @@ public class Main {
      * TODO: Needs SQL SCripts to input the data
      */
     public static void addEmployee() {
-        if (Main.departmentCh != "H") {
+        if (!Main.departmentCh.equals("H")) {
             System.out.println("Error: Only HR employees can access this function");
             return;
         }

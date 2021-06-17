@@ -12,7 +12,7 @@ public class UseCases {
     private final static float taxRate = 0.25f;
 
     public static void grossPayReport() {
-        if (Main.departmentCh != "F") {
+        if (!Main.departmentCh.equals("F")) {
             System.out.println("Error: Only Finance employees can access this function");
             return;
         }
@@ -32,7 +32,7 @@ public class UseCases {
     }
 
     public static void highestSalesReport() {
-        if (Main.departmentCh != "S") {
+        if (!Main.departmentCh.equals("S")) {
             System.out.println("Error: Only Sales Managers can access this function");
             return;
         }
@@ -52,7 +52,7 @@ public class UseCases {
     }
 
     public static void employeeSummaryReport() {
-        if (Main.departmentCh != "H") {
+        if (!Main.departmentCh.equals("H")) {
             System.out.println("Error: Only HR employees can access this function");
             return;
         }
@@ -72,7 +72,7 @@ public class UseCases {
     }
 
     public static void employeesWithNoProjectReport() {
-        if (Main.departmentCh != "T") {
+        if (!Main.departmentCh.equals("T")) {
             System.out.println("Error: Only Talent Managers can access this function");
             return;
         }
@@ -92,7 +92,7 @@ public class UseCases {
     }
 
     public static void projectsWithNoEmployeesReport() {
-        if (Main.departmentCh != "T") {
+        if (!Main.departmentCh.equals("T")) {
             System.out.println("Error: Only Talent Managers can access this function");
             return;
         }
@@ -112,7 +112,7 @@ public class UseCases {
     }
 
     public static void numberOfEmployeesOnSpecificProject() {
-        if (Main.departmentCh != "T") {
+        if (!Main.departmentCh.equals("T")) {
             System.out.println("Error: Only Talent Managers can access this function");
             return;
         }
@@ -150,7 +150,7 @@ public class UseCases {
     }
 
     public static void projectEmployeeReport() {
-        if (Main.departmentCh != "T") {
+        if (!Main.departmentCh.equals("T")) {
             System.out.println("Error: Only Talent Managers can access this function");
             return;
         }
@@ -170,7 +170,7 @@ public class UseCases {
     }
 
     public static void createProject() {
-        if (Main.departmentCh != "T") {
+        if (!Main.departmentCh.equals("T")) {
             System.out.println("Error: Only Talent Managers can access this function");
             return;
         }
@@ -192,7 +192,7 @@ public class UseCases {
     }
 
     public static void assignToProject() {
-        if (Main.departmentCh != "T") {
+        if (!Main.departmentCh.equals("T")) {
             System.out.println("Error: Only Talent Managers can access this function");
             return;
         }
@@ -262,6 +262,10 @@ public class UseCases {
     }
 
     public static void addSalesEmployee () {
+        if (!Main.departmentCh.equals("H")) {
+            System.out.println("Error: Only HR employees can access this function");
+            return;
+        }
         Connection connection = DBConnection.getConnection();
         try {
             Statement st = connection.createStatement();
