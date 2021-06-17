@@ -14,9 +14,10 @@ public class DBStatements {
     public static ResultSet SelectStatement(String sql, Connection connection) {
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            return  st.executeQuery(sql);
         } catch (SQLException e) {
 
         }
+        return null;
     }
 }

@@ -1,7 +1,9 @@
 package com.kainos.ea.dbUtils;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Properties;
 
 public class DBConnection {
     private static Connection conn;
@@ -14,15 +16,20 @@ public class DBConnection {
         if (conn != null) {
             return conn;
         }
+        FileInputStream propsStream =
+                new FileInputStream("employeesdb.properties");
+
+        Properties props = new Properties();
+        props.load(propsStream);
+
+        user = props.getProperty("user");
+        password = props.getProperty("password");
+        host = props.getProperty("host");
 
         try {
-            // Bad practice alert!
-            user = "empsuser";
-            password = "empPwd!";
-            host = "localhost";
 
             conn = DriverManager.getConnection("jdbc:mysql://"
-                    + host + "/employees?useSSL=false", user, password);
+                    + host + "/Database_ET?useSSL=false", user, password);
             return conn;
 
         } catch (Exception e) {
