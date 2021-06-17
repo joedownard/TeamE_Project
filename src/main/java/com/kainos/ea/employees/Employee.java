@@ -6,10 +6,10 @@ public class Employee implements Payable {
 
     private String name;
     private String address;
-    private String nin; // national insurance number TODO: validation on this string
-    private String bankAccountNumber; // related to bank details TODO: validation
-    private String sortCode; // related to bank details TODO: validation
-    private int salary; // TODO: is this meant to be a default value 'starting salary'
+    private String nin; // national insurance number
+    private String bankAccountNumber; // related to bank details
+    private String sortCode; // related to bank details
+    private int salary;
     private String employeeNumber; // employee number from the database
 
     public String getName() {
