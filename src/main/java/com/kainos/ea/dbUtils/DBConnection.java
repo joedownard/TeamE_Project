@@ -21,7 +21,7 @@ public class DBConnection {
         FileInputStream propsStream =
                 null;
         try {
-            propsStream = new FileInputStream("employeesdb.properties");
+            propsStream = new FileInputStream("Database_ET.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
