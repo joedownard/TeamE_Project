@@ -246,6 +246,11 @@ public class UseCases {
     }
 
     public static void addEmployee(String name, String address, String nin, String ban, String sortCode, double salary, department depart, boolean isManager) {
+        if (!Main.departmentCh.equals("H")) {
+            System.out.println("Error: Only HR Employees can access this function");
+            return;
+        }
+
         Connection connection = DBConnection.getConnection();
         try {
             Statement st = connection.createStatement();
