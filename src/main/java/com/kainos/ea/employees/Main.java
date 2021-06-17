@@ -15,7 +15,9 @@ public class Main {
         System.out.println("Please enter your password");
         String password = scanner.nextLine();
 
-        System.out.println(userName + " " + password);
+        UseCases.grossPayReport();
+        System.out.println();
+        UseCases.highestSalesReport();
 
         addEmployee(scanner);
     }
