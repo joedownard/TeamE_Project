@@ -1,4 +1,4 @@
-package com.kainos.ea;
+package com.kainos.ea.employees;
 
 public class Main {
 
