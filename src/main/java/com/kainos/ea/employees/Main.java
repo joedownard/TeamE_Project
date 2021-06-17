@@ -18,6 +18,15 @@ public class Main {
         UseCases.grossPayReport();
         System.out.println();
         UseCases.highestSalesReport();
+        System.out.println();
+        UseCases.employeeSummaryReport();
+        System.out.println();
+        UseCases.employeesWithNoProjectReport();
+        System.out.println();
+        UseCases.projectsWithNoEmployeesReport();
+        System.out.println();
+        UseCases.projectEmployeeReport();
+        System.out.println();
 
         addEmployee(scanner);
     }

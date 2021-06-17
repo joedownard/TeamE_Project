@@ -31,7 +31,7 @@ public class UseCases {
             ResultSet rs = st.executeQuery(
                     "SELECT * FROM `Highest Sales`");
             while (rs.next()) {
-                System.out.println(String.format("%s had the highest sales of £%s", rs.getString("emp_name"), rs.getString("total_sales_value")));
+                System.out.println(String.format("%s (Employee ID: %s) had the highest sales of £%s", rs.getString("emp_name"), rs.getString("emp_id"), rs.getString("total_sales_value")));
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
@@ -45,7 +45,7 @@ public class UseCases {
             ResultSet rs = st.executeQuery(
                     "SELECT * FROM `Employee Summary`");
             while (rs.next()) {
-                System.out.println(rs);
+                System.out.println(String.format("%s (Employee ID: %s) is in the %s department.", rs.getString("emp_name"), rs.getString("emp_id"), rs.getString("department")));
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
@@ -59,12 +59,41 @@ public class UseCases {
             ResultSet rs = st.executeQuery(
                     "SELECT * FROM `Employees with no projects`");
             while (rs.next()) {
-                System.out.println(rs);
+                System.out.println(String.format("%s (Employee ID: %s) has not been assigned any projects.", rs.getString("Employee Name"), rs.getString("Employee ID")));
             }
         } catch (SQLException e) {
             System.out.println("Unable to query the database to complete this report!");
+            System.out.println(e.getMessage());
         }
     }
 
+    public static void projectsWithNoEmployeesReport () {
+        Connection connection = DBConnection.getConnection();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(
+                    "SELECT * FROM `Projects with no employees`");
+            while (rs.next()) {
+                System.out.println(String.format("%s (Project ID: %s) has not been assigned any employees.", rs.getString("Project Name"), rs.getString("Project ID")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Unable to query the database to complete this report!");
+            System.out.println(e.getMessage());
+        }
+    }
 
+    public static void projectEmployeeReport () {
+        Connection connection = DBConnection.getConnection();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(
+                    "SELECT * FROM `Projects with employees`");
+            while (rs.next()) {
+                System.out.println(String.format("%s (Project ID: %s) has been assigned %s (Employee ID: %s).", rs.getString("project_name"), rs.getString("project_id"), rs.getString("emp_name"), rs.getString("emp_id")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Unable to query the database to complete this report!");
+            System.out.println(e.getMessage());
+        }
+    }
 }
