@@ -2,10 +2,7 @@ package com.kainos.ea.employees;
 
 import com.kainos.ea.dbUtils.DBConnection;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class UseCases {
     private final static float taxRate = 0.25f;
@@ -66,5 +63,19 @@ public class UseCases {
         }
     }
 
+    public static void addEmployee(String name, String address, String nin, String ban, String sortCode, double salary, department depart, boolean isManager) {
+        Connection connection = DBConnection.getConnection();
+        try {
+            Statement st = connection.createStatement();
+            int rs = st.executeUpdate(
+                    "INSERT INTO Employee (emp_name, address, nin, ban, sortcode, salary, department, manager) VALUES ('" + name + "', '" + address + "', '" + nin + "', '" + ban + "', '" + sortCode + "', " + salary + ", '" + depart.toString() + "', " + (isManager ? 1 : 0) +");");
 
-}
+        } catch (SQLException e) {
+                System.out.println("Unable to query the database to complete this action!");
+            System.out.println(e.getMessage());
+            }
+        }
+    }
+
+
+

@@ -72,7 +72,7 @@ public class Main {
         boolean isManager = checkIfManager(addEmp);
 
         System.out.println(empName + " " + empAddress + " " + empNIN + " " + empBankAccNum + " " + empSortCode + " " + empSalary + " " + empDepartment.toString() + " " + isManager);
-
+        UseCases.addEmployee(empName, empAddress, empNIN, empBankAccNum, empSortCode, empSalary, empDepartment, isManager);
     }
 
     public static boolean checkIfManager(Scanner addEmp) {
