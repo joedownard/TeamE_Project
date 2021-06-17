@@ -18,56 +18,66 @@ public class Main {
 
         ///////////////////////
 
-        System.out.println("Please select an option");
-        System.out.println("---------------------");
-        System.out.println("\nHR STAFF:");
-        System.out.println("1) Add employee");
-        System.out.println("2) Department Employees");
-        System.out.println("\nFINANCE STAFF:");
-        System.out.println("3) Employee Gross Pay");
-        System.out.println("\nSALES MANAGER:");
-        System.out.println("4) Highest Sales Total Employee");
-        System.out.println("\nTALENT MANAGER:");
-        System.out.println("5) Create Project");
-        System.out.println("6) Assign to Project");
-        System.out.println("7) See Assigned Employees");
-        System.out.println("8) See Benched Employees");
-        System.out.println("9) See Unassigned Projects");
-        System.out.println("10) See Number of Employees on Project");
-        System.out.print("\nOption: ");
-        int option = scanner.nextInt();
-        System.out.println();
-        switch (option) {
-            case 1:
-                addEmployee(scanner);
-                break;
-            case 2:
-                UseCases.employeeSummaryReport();
-                break;
-            case 3:
-                UseCases.grossPayReport();
-                break;
-            case 4:
-                UseCases.highestSalesReport();
-                break;
-            case 5:
-                UseCases.createProject();
-                break;
-            case 6:
-                UseCases.assignToProject();
-                break;
-            case 7:
-                UseCases.projectEmployeeReport();
-                break;
-            case 8:
-                UseCases.employeesWithNoProjectReport();
-                break;
-            case 9:
-                UseCases.projectsWithNoEmployeesReport();
-                break;
-            case 10:
-                UseCases.numberOfEmployeesOnSpecificProject();
-                break;
+        while (true) {
+            System.out.println();
+            System.out.println("Please select an option");
+            System.out.println("---------------------");
+            System.out.println("\nHR STAFF:");
+            System.out.println("1) Add employee");
+            System.out.println("2) Department Employees");
+            System.out.println("\nFINANCE STAFF:");
+            System.out.println("3) Employee Gross Pay");
+            System.out.println("\nSALES MANAGER:");
+            System.out.println("4) Highest Sales Total Employee");
+            System.out.println("\nTALENT MANAGER:");
+            System.out.println("5) Create Project");
+            System.out.println("6) Assign to Project");
+            System.out.println("7) See Assigned Employees");
+            System.out.println("8) See Benched Employees");
+            System.out.println("9) See Unassigned Projects");
+            System.out.println("10) See Number of Employees on Project");
+            System.out.print("\nOption: ");
+            int option = scanner.nextInt();
+            System.out.println();
+            switch (option) {
+                case 1:
+                    addEmployee(scanner);
+                    break;
+                case 2:
+                    UseCases.employeeSummaryReport();
+                    break;
+                case 3:
+                    UseCases.grossPayReport();
+                    break;
+                case 4:
+                    UseCases.highestSalesReport();
+                    break;
+                case 5:
+                    UseCases.createProject();
+                    break;
+                case 6:
+                    UseCases.assignToProject();
+                    break;
+                case 7:
+                    UseCases.projectEmployeeReport();
+                    break;
+                case 8:
+                    UseCases.employeesWithNoProjectReport();
+                    break;
+                case 9:
+                    UseCases.projectsWithNoEmployeesReport();
+                    break;
+                case 10:
+                    UseCases.numberOfEmployeesOnSpecificProject();
+                    break;
+            }
+
+            System.out.println();
+            System.out.println("Press enter to return to menu. Type exit then press enter to exit.");
+            scanner = new Scanner(System.in);
+            String res = scanner.nextLine();
+            System.out.println(res);
+            if (res.equals("exit")) return;
         }
 
     }
