@@ -1,7 +1,6 @@
 package com.kainos.ea.employees;
 
 import java.util.Scanner;
-import java.io.Console;
 
 public class Main {
 
