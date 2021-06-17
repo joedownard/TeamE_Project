@@ -118,7 +118,6 @@ public class Main {
                 break;
         }
 
-
         boolean isManager = checkIfManager(addEmp);
 
         System.out.println(empName + " " + empAddress + " " + empNIN + " " + empBankAccNum + " " + empSortCode + " " + empSalary + " " + empDepartment.toString() + " " + isManager);
