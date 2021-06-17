@@ -289,9 +289,9 @@ public class UseCases {
         System.out.println("Please enter the id of the employee you wish to add to sales employee.");
         int emp_id = scanner.nextInt();
         System.out.println("Please enter the commission rate for the employee.");
-        int commission_rate = scanner.nextInt();
+        float commission_rate = scanner.nextFloat();
         System.out.println("Please enter the sales value for the employee.");
-        int sales_value = scanner.nextInt();
+        float sales_value = scanner.nextFloat();
 
         try {
             Statement st = connection.createStatement();
