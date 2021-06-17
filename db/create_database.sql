@@ -42,9 +42,15 @@ CREATE TABLE Technical_Project (
 
 CREATE TABLE Sales_Employee (
     emp_id SMALLINT NOT NULL,
-    commission_rate DECIMAL(2,2) NOT NULL,
+    commission_rate DECIMAL(4,2) NOT NULL,
     total_sales_value DECIMAL(11, 2) NOT NULL,
     PRIMARY KEY (emp_id),
     FOREIGN KEY (emp_id)
         REFERENCES Employee (emp_id)
+);
+
+CREATE TABLE Credential (
+	emp_id SMALLINT NOT NULL,
+    username VARCHAR(20) NOT NULL,
+    pass VARCHAR(20) NOT NULL
 );
