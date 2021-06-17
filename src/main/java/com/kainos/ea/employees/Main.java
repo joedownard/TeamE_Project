@@ -148,7 +148,6 @@ public class Main {
 
         boolean isManager = checkIfManager(addEmp);
 
-        System.out.println(empName + " " + empAddress + " " + empNIN + " " + empBankAccNum + " " + empSortCode + " " + empSalary + " " + empDepartment.toString() + " " + isManager);
         UseCases.addEmployee(empName, empAddress, empNIN, empBankAccNum, empSortCode, empSalary, empDepartment, isManager);
     }
 
@@ -168,7 +167,7 @@ public class Main {
 
     public static int department(Scanner addEmp) {
 
-        System.out.println("Please enter their department(1-5)\n1. HR\n2.FINANCE\n3.TALENT\n4.TECHNICAL\n5.SALES");
+        System.out.println("Please enter their department(1-5)\n1.HR\n2.FINANCE\n3.TALENT\n4.TECHNICAL\n5.SALES");
         int department = addEmp.nextInt();
 
         switch (department) {
