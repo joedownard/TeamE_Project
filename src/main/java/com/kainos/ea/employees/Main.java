@@ -41,7 +41,7 @@ public class Main {
             System.out.println();
             switch (option) {
                 case 1:
-                    addEmployee(scanner);
+                    addEmployee();
                     break;
                 case 2:
                     UseCases.employeeSummaryReport();
@@ -86,8 +86,8 @@ public class Main {
      * Use case 1: Allows HR member to add an employee
      * TODO: Needs SQL SCripts to input the data
      */
-    public static void addEmployee(Scanner addEmp) {
-
+    public static void addEmployee() {
+        Scanner addEmp = new Scanner(System.in);
         System.out.println("Please enter the following details for the employee:");
         System.out.println("----------------------------------------------------");
         System.out.println("Full name");
