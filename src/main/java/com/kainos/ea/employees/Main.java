@@ -51,10 +51,10 @@ public class Main {
                 UseCases.highestSalesReport();
                 break;
             case 5:
-
+                UseCases.createProject();
                 break;
             case 6:
-
+                UseCases.assignToProject();
                 break;
             case 7:
                 UseCases.projectEmployeeReport();
@@ -66,7 +66,7 @@ public class Main {
                 UseCases.projectsWithNoEmployeesReport();
                 break;
             case 10:
-
+                UseCases.numberOfEmployeesOnSpecificProject();
                 break;
         }
 
