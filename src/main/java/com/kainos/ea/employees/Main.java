@@ -84,9 +84,9 @@ public class Main {
 
     /**
      * Use case 1: Allows HR member to add an employee
+     * TODO: Needs SQL SCripts to input the data
      */
     public static void addEmployee() {
-
         Scanner addEmp = new Scanner(System.in);
         System.out.println("Please enter the following details for the employee:");
         System.out.println("----------------------------------------------------");
@@ -128,7 +128,10 @@ public class Main {
                 break;
         }
 
+
         boolean isManager = checkIfManager(addEmp);
+
+        System.out.println(empName + " " + empAddress + " " + empNIN + " " + empBankAccNum + " " + empSortCode + " " + empSalary + " " + empDepartment.toString() + " " + isManager);
         UseCases.addEmployee(empName, empAddress, empNIN, empBankAccNum, empSortCode, empSalary, empDepartment, isManager);
     }
 
