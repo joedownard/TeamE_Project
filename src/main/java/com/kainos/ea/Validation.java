@@ -14,11 +14,11 @@ public class Validation {
         return true;
     }
 
-    public static boolean NumericCheck(String input, int min, int max) {
+    public static boolean NumericCheck(String input) {
         return checkRegex(input, "^\\d+(\\.\\d+)*$");
     }
 
-    public static boolean NonNumericCheck(String input, int min, int max) {
+    public static boolean NonNumericCheck(String input) {
         return checkRegex(input, "^([^0-9]*)$");
     }
 

@@ -1,5 +1,6 @@
 package com.kainos.ea.employees;
 
+import com.kainos.ea.Validation;
 import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.Scanner;
@@ -97,7 +98,6 @@ public class Main {
 
     /**
      * Use case 1: Allows HR member to add an employee
-     * TODO: Needs SQL SCripts to input the data
      */
     public static void addEmployee() {
         Scanner addEmp = new Scanner(System.in);
@@ -144,7 +144,12 @@ public class Main {
 
         boolean isManager = checkIfManager(addEmp);
 
-        UseCases.addEmployee(empName, empAddress, empNIN, empBankAccNum, empSortCode, empSalary, empDepartment, isManager);
+        if(!addEmployeeValidation(empName, empAddress, empNIN, empBankAccNum, empSortCode, empSalary)) {
+            System.out.println("Unable to add employee");
+        } else {
+            UseCases.addEmployee(empName, empAddress, empNIN, empBankAccNum, empSortCode, empSalary, empDepartment, isManager);
+        }
+
     }
 
     public static boolean checkIfManager(Scanner addEmp) {
@@ -180,6 +185,30 @@ public class Main {
             default:
                 System.out.println("Please enter 1, 2 , 3 , 4 or 5");
                 return department(addEmp);
+        }
+    }
+
+    public static boolean addEmployeeValidation(String empName, String empAddress, String empNIN, String empBankAccNum, String empSortCode, double empSalary) {
+        if (empName.length() == 0 || empAddress.length() == 0 || empBankAccNum.length() == 0) {
+            System.out.println("Please ensure you fill in all fields");
+            return false;
+        } else if (!Validation.NonNumericCheck(empName)) {
+            System.out.println("Name can only contain letters");
+            return false;
+        } else if (!Validation.checkRegex(empNIN, "^\\s*[a-zA-Z]{2}(?:\\s*\\d\\s*){6}[a-zA-Z]?\\s*$")) {
+            System.out.println("Invalid national insurance number");
+            return false;
+        } else if (empBankAccNum.length() != 8 && Validation.NonNumericCheck(empBankAccNum)) {
+            System.out.println("Invalid bank account number");
+            return false;
+        } else if (empSortCode.length() != 6 && Validation.NonNumericCheck(empSortCode)) {
+            System.out.println("Invalid sort code");
+            return false;
+        } else if (empSalary < 0) {
+            System.out.println("Salary cannot be less than 0");
+            return false;
+        } else {
+            return true;
         }
     }
 }
